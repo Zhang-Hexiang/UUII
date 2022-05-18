@@ -1,6 +1,8 @@
 package com.example.uuii;
 
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.sun.jdi.Bootstrap;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.velocity.texen.util.FileUtil;
@@ -13,7 +15,7 @@ import java.io.*;
 
 
 public class DataSave {
-    /*JSONArray jsonArray = new JSONArray();*/
+    JSONArray jsonArray = new JSONArray();
     PlayerInfo player = new PlayerInfo();
 
 
@@ -27,12 +29,12 @@ public class DataSave {
 
     @Test
     public void save() throws IOException {
-        File file = new File("C:\\Users\\acer\\IdeaProjects\\SWEFinalProject\\src\\main\\resources\\GameData.json");
+        File file = new File("E:\\UUII\\src\\main\\resources\\GameData.json");
 
         FileOutputStream fileOutputStream = new FileOutputStream(file,false);
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
         BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-/*
+
 
         JSONObject jsonObject = new JSONObject();
 
@@ -52,7 +54,7 @@ public class DataSave {
         bufferedWriter.write("\n");
         bufferedWriter.flush();
         bufferedWriter.close();
-*/
+
 
 /*        String jsonOutput = jsonArray.toJSONString();
         System.out.println(jsonOutput);*/

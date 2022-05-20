@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
@@ -27,6 +28,8 @@ public class Main extends Application {
         DataSave dataSave = new DataSave();
         // PlayerInfo playertest = dataSave.read();
         PlayerInfo player = new PlayerInfo();
+
+        launch();
 
         System.out.println("Please enter your ID : ");
 
@@ -107,13 +110,18 @@ public class Main extends Application {
             gameResponse.gameEnd(GameStatus.GIVEUP,player,dataSave,totalTime,count,pieceB.getcBoard());
             System.out.println("FAIL");
         }
-        launch();}
-       /*
-
+        //launch();
     }
-*/
+
     @Override
     public void start(Stage stage) {
+
+        Label label = new Label("pls enter your ID!");
+        BorderPane pane = new BorderPane(label);
+
+        Scene scene = new Scene(pane,300,300);
+        stage.setScene(scene);
+
         stage.setTitle("Sample");
         stage.show();
     }

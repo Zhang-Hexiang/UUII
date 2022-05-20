@@ -49,6 +49,8 @@ public class Chessboard {
         return this.cBoard;
     }
 
+
+    //TODO testWin --> Win
     public boolean testWin(){
         if(this.cBoard[0][0] == Piece.KING
                 && this.cBoard[0][1] == Piece.BISHOP

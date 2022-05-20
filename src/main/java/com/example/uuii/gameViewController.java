@@ -3,6 +3,7 @@ package com.example.uuii;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
@@ -23,36 +24,57 @@ public class gameViewController {
     @FXML
     private Button button12;
     @FXML
-    private ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+    private Button score;
     @FXML
-    private ImageView rookPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\ROOK.png");
-    @FXML
-    private ImageView bishopPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\BISHOP.png");
+    private TableView highScoreTable;
+//    @FXML
+//    private ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+//    @FXML
+//    private ImageView rookPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\ROOK.png");
+//    @FXML
+//    private ImageView bishopPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\BISHOP.png");
 
 
+    @FXML
+    void onScoreActive(ActionEvent event){
+        boolean vis = highScoreTable.isVisible();
+        highScoreTable.setVisible(!vis);
+
+    }
     @FXML
     void onButton00Active(ActionEvent event){
+        ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
         grid.add(kingPiece,0,0);
     }
     @FXML
     void onButton01Active(ActionEvent event){
-        grid.add(kingPiece,0,1);
+        ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+        grid.add(kingPiece,1,0);
+        System.out.println("2222");
     }
     @FXML
     void onButton02Active(ActionEvent event){
-        grid.add(kingPiece,0,2);
+        ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+        grid.add(kingPiece,2,0);
     }
     @FXML
     void onButton10Active(ActionEvent event){
-        grid.add(kingPiece,1,0);
+        ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+        grid.add(kingPiece,0,1);
     }
     @FXML
     void onButton11Active(ActionEvent event){
+        ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
         grid.add(kingPiece,1,1);
     }
     @FXML
     void onButton12Active(ActionEvent event){
-        grid.add(kingPiece,1,2);
+        ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+        grid.add(kingPiece,2,1);
+    }
+
+    public void initialize(){
+        System.out.println("ini");
     }
 
 }

@@ -9,15 +9,17 @@ import javafx.stage.Stage;
 
 public class UITest extends Application {
 
-    //public static int sceneNum = 0;
+    public static int count = 0;
+
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage.setTitle("Test Tittle");
+        Parent root = FXMLLoader.load(getClass().getResource("start-view.fxml"));
+        stage.setTitle("Board Game");
         stage.setScene(new Scene(root));
         stage.show();
+
 
     }
 

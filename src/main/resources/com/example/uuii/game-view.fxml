@@ -55,14 +55,5 @@
             </ImageView>
          </children>
       </GridPane>
-      <TableView fx:id="highScoreTable" disable="true" layoutX="-3.0" layoutY="42.0" prefHeight="358.0" prefWidth="606.0">
-        <columns>
-            <TableColumn prefWidth="109.0" text="playerIDColumn" />
-            <TableColumn prefWidth="98.0" text="countColumn" />
-          <TableColumn prefWidth="232.0" text="startTimeColumn" />
-          <TableColumn minWidth="0.0" prefWidth="164.0" text="endTimeColumn" />
-        </columns>
-      </TableView>
-      <Button fx:id="score" layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#onScoreActive" text="Button" />
    </children>
 </AnchorPane>

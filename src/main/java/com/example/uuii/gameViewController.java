@@ -23,24 +23,7 @@ public class gameViewController {
     private Button button11;
     @FXML
     private Button button12;
-    @FXML
-    private Button score;
-    @FXML
-    private TableView highScoreTable;
-//    @FXML
-//    private ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
-//    @FXML
-//    private ImageView rookPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\ROOK.png");
-//    @FXML
-//    private ImageView bishopPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\BISHOP.png");
 
-
-    @FXML
-    void onScoreActive(ActionEvent event){
-        boolean vis = highScoreTable.isVisible();
-        highScoreTable.setVisible(!vis);
-
-    }
     @FXML
     void onButton00Active(ActionEvent event){
         ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");

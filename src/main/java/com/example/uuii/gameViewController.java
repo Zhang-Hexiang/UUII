@@ -3,6 +3,7 @@ package com.example.uuii;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -31,6 +32,8 @@ public class gameViewController {
     private Button button12;
     @FXML
     private Button giveUpButton;
+    @FXML
+    private Label winText;
 
     public static boolean start = false;
     public static boolean giveUp = false;
@@ -112,6 +115,7 @@ public class gameViewController {
         player.setID(StartViewController.idGet);
         emptyRow = 1;
         emptyCol = 2;
+        winText.setVisible(false);
 
         locationRow = 0;
         locationCol = 0;
@@ -157,6 +161,9 @@ public class gameViewController {
                 player.setCount(count);
                 dataSave.setPlayer(player);
                 dataSave.save();
+                dataSave.highScoreSave();
+                giveUpButton.setVisible(false);
+                winText.setVisible(true);
 
             }
         }

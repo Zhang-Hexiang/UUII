@@ -58,6 +58,8 @@ public class StartViewController {
 
     @FXML
     void onQuitButtonActive(ActionEvent event){
+         Stage stage = (Stage)quitButton.getScene().getWindow();
+         stage.close();
 
     }
     @FXML

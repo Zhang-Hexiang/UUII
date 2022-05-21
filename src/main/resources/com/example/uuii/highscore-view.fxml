@@ -3,15 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uuii.HighScoreViewController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uuii.HighScoreViewController">
    <children>
-      <TableView fx:id="highScoreTable" prefHeight="400.0" prefWidth="600.0">
+      <TableView fx:id="highScoreTable" prefHeight="400.0" prefWidth="800.0">
         <columns>
             <TableColumn fx:id="rankCol" prefWidth="36.0" text="Rank" />
           <TableColumn fx:id="playerIDCol" prefWidth="131.0" text="ID" />
           <TableColumn fx:id="stepsCol" minWidth="0.0" prefWidth="51.0" text="Steps" />
-            <TableColumn fx:id="startCol" prefWidth="184.0" text="Start Time" />
-            <TableColumn fx:id="endCol" prefWidth="196.0" text="End Time" />
+            <TableColumn fx:id="startCol" prefWidth="292.0" text="Start Time" />
+            <TableColumn fx:id="endCol" prefWidth="289.0" text="End Time" />
         </columns>
       </TableView>
    </children>

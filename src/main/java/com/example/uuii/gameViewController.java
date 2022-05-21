@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -28,6 +29,8 @@ public class gameViewController {
     private Button button11;
     @FXML
     private Button button12;
+    @FXML
+    private Button giveUpButton;
 
     public static boolean start = false;
     public static boolean giveUp = false;
@@ -87,6 +90,13 @@ public class gameViewController {
             this.testPrint();
     }
 
+    @FXML
+    void onGiveUpButtonActive(ActionEvent event){
+        Stage stage = (Stage)giveUpButton.getScene().getWindow();
+        stage.close();
+    }
+
+
     public void initialize(){
 
         System.out.println("ini in game view");
@@ -99,6 +109,7 @@ public class gameViewController {
         player = new PlayerInfo();
         chessboard = new Chessboard();
         player.setStartDate(System.currentTimeMillis());
+        player.setID(StartViewController.idGet);
         emptyRow = 1;
         emptyCol = 2;
 

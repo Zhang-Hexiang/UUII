@@ -26,6 +26,7 @@ public class StartViewController {
     private Button quitButton;
     String playerID = "";
     String emp = "";
+    public static String idGet;
     @FXML
     void onStartButtonActive(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -41,6 +42,8 @@ public class StartViewController {
             stage.setTitle("Board Game");
             stage.setScene(new Scene(root));
             stage.show();
+//            Stage stageNow = (Stage)startButton.getScene().getWindow();
+//            stageNow.close();
         }
     }
 
@@ -60,6 +63,7 @@ public class StartViewController {
     @FXML
     void inputPlayerID(KeyEvent event){
         playerID = textID.getText();
+        idGet = textID.getText();
     }
     @FXML
     void initialize(){

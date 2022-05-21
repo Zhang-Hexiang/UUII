@@ -39,12 +39,12 @@ public class Main extends Application {
 
         player.setCount(count);
 
-        Date dateNow = new Date();
+        //Date dateNow = new Date();
 
-        player.setStartDate(dateNow);
+        //player.setStartDate(dateNow);
 
         long startTime = System.currentTimeMillis();
-
+        player.setStartDate(startTime);
 
         player.setGameOver(GameStatus.RUNNING);
 

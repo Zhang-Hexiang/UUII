@@ -34,6 +34,9 @@ public class StartViewController {
             System.out.println(playerID);
             textID.setText(emp);
             playerID = emp;
+
+            gameViewController.player.setID(playerID);
+
             Parent root = FXMLLoader.load(getClass().getResource("game-view.fxml"));
             stage.setTitle("Board Game");
             stage.setScene(new Scene(root));
@@ -57,12 +60,11 @@ public class StartViewController {
     @FXML
     void inputPlayerID(KeyEvent event){
         playerID = textID.getText();
-        System.out.println("sas");
     }
     @FXML
     void initialize(){
         playerID = emp;
-        System.out.println("ini");
+        System.out.println("ini in start");
     }
 
 }

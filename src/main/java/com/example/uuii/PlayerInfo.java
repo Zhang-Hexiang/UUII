@@ -15,10 +15,10 @@ public class PlayerInfo {
        private int count;
 
        @JSONField(name = "Start Date")
-       private Date startDate;
+       private Long startDate;
 
        @JSONField(name = "End Date", format = "yyyy/MM/dd", ordinal = 3)
-       private Date endDate;
+       private Long endDate;
 
        @JSONField(name = "Game Status")
        private GameStatus gameOver;
@@ -50,10 +50,10 @@ public class PlayerInfo {
            return this.count;
        }
 
-       public void setStartDate(Date code){
+       public void setStartDate(Long code){
            this.startDate = code;
        }
-       public Date getStartDate(){
+       public Long getStartDate(){
            return this.startDate;
        }
 
@@ -71,10 +71,10 @@ public class PlayerInfo {
            return this.totalTime;
        }
 
-       public void setEndDate(Date code){
+       public void setEndDate(long code){
            this.endDate = code;
        }
-       public Date getEndDate(){
+       public Long getEndDate(){
            return this.endDate;
        }
 

@@ -50,7 +50,7 @@ public class Chessboard {
     }
 
 
-    //TODO testWin --> Win
+
     public boolean testWin(){
         if(this.cBoard[0][0] == Piece.KING
                 && this.cBoard[0][1] == Piece.BISHOP

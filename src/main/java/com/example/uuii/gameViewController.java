@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -43,42 +45,42 @@ public class gameViewController {
     public static pieceMove move = new pieceMove();
 
     @FXML
-    void onButton00Active(ActionEvent event){
+    void onButton00Active(ActionEvent event) throws IOException {
         if(!win)
         this.buttonTODO(0,0);
         else
             this.testPrint();
     }
     @FXML
-    void onButton01Active(ActionEvent event){
+    void onButton01Active(ActionEvent event) throws IOException {
         if(!win)
          this.buttonTODO(0,1);
         else
             this.testPrint();
     }
     @FXML
-    void onButton02Active(ActionEvent event){
+    void onButton02Active(ActionEvent event) throws IOException {
         if(!win)
         this.buttonTODO(0,2);
         else
             this.testPrint();
     }
     @FXML
-    void onButton10Active(ActionEvent event){
+    void onButton10Active(ActionEvent event) throws IOException {
         if(!win)
         this.buttonTODO(1,0);
         else
             this.testPrint();
     }
     @FXML
-    void onButton11Active(ActionEvent event){
+    void onButton11Active(ActionEvent event) throws IOException {
         if(!win)
         this.buttonTODO(1,1);
         else
             this.testPrint();
     }
     @FXML
-    void onButton12Active(ActionEvent event){
+    void onButton12Active(ActionEvent event) throws IOException {
         if (!win)
         this.buttonTODO(1,2);
         else
@@ -105,7 +107,7 @@ public class gameViewController {
         move = new pieceMove();
     }
 
-    public void buttonTODO(int row, int col){
+    public void buttonTODO(int row, int col) throws IOException {
         Piece piece = chessboard.getcBoard()[row][col];
         locationRow = row;
         locationCol = col;
@@ -135,9 +137,16 @@ public class gameViewController {
 
             grid.add(emptyPiece,locationCol,locationRow);
             if(win){
+                DataSave dataSave = new DataSave();
                 long endTime = System.currentTimeMillis();
                 player.setEndDate(endTime);
                 player.setTotalTime(player.getEndDate() - player.getStartDate());
+                player.setGameOver(GameStatus.WIN);
+                player.setChessBoard(chessboard.getcBoard());
+                player.setCount(count);
+                dataSave.setPlayer(player);
+                dataSave.save();
+
             }
         }
     }

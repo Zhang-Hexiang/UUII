@@ -98,4 +98,9 @@ public class DataSave {
         return sDateTime;
     }
 
+    public static void read(){
+        JSONObject jsonObject = new JSONObject();
+
+    }
+
 }

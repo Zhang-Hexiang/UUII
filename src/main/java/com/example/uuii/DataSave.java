@@ -20,14 +20,9 @@ public class DataSave {
 
     PlayerInfo player = new PlayerInfo();
 
-
-
     public void setPlayer(PlayerInfo player1){
         this.player = player1;
     }
-
-
-
 
     @Test
     public void save() throws IOException {
@@ -38,14 +33,11 @@ public class DataSave {
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
         BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
 
-
         JSONObject jsonObject = new JSONObject();
-
         jsonObject.put("ID",this.player.getID());
         jsonObject.put("Count", player.getCount());
         jsonObject.put("Start Date", player.getStartDate());
         jsonObject.put("End Date", player.getEndDate());
-
         jsonObject.put("Game Status", this.player.getGameOver());
         jsonObject.put("Total Time", player.getTotalTime());
         jsonObject.put("Board Status", player.getChessBoard());
@@ -54,51 +46,8 @@ public class DataSave {
 
         String jsonString = jsonArray.toString();
         bufferedWriter.write(jsonString);
-        bufferedWriter.write("\n");
         bufferedWriter.flush();
         bufferedWriter.close();
-
-
-/*        String jsonOutput = jsonArray.toJSONString();
-        System.out.println(jsonOutput);*/
-    }
-
-    public void highScoreSave() throws IOException {
-        JSONArray jsonArray = new JSONArray();
-        File file = new File("E:\\UUII\\src\\main\\resources\\HighScoreData.json");
-
-        FileOutputStream fileOutputStream = new FileOutputStream(file,true);
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
-        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-        JSONObject jsonObject = new JSONObject();
-
-        jsonObject.put("ID",this.player.getID());
-        jsonObject.put("steps", this.player.getCount());
-        String totalTimeString = fromLongToDate("mm:ss",player.getTotalTime());
-        jsonObject.put("Total Time",totalTimeString);
-
-        jsonArray.add(jsonObject);
-
-        String jsonString = jsonArray.toString();
-        bufferedWriter.write(jsonString);
-        bufferedWriter.write("\n");
-        bufferedWriter.flush();
-        bufferedWriter.close();
-
-
-    }
-
-
-    public static String fromLongToDate(String format, Long time){
-        SimpleDateFormat sdf= new SimpleDateFormat(format);
-        java.util.Date dt = new Date(time);
-        String sDateTime = sdf.format(dt);
-        return sDateTime;
-    }
-
-    public static void read(){
-        JSONObject jsonObject = new JSONObject();
-
     }
 
 }

@@ -38,24 +38,22 @@ public class gameViewController {
     @FXML
     private Label winText;
 
-    public static boolean start = false;
-    public static boolean giveUp = false;
-    public static boolean win = false;
-    public static long totalTime = 0;
-    public static int count = 0;
+    private static boolean win = false;
+    private static long totalTime = 0;
+    private static int count = 0;
     public static PlayerInfo player = new PlayerInfo();
     public static Chessboard chessboard = new Chessboard();
 
-    public static int emptyRow = 1;
-    public static int emptyCol = 2;
+    private static int emptyRow = 1;
+    private static int emptyCol = 2;
 
-    public static int locationRow = 0;
-    public static int locationCol = 0;
-    public static pieceMove move = new pieceMove();
+    private static int locationRow = 0;
+    private static int locationCol = 0;
+    private static pieceMove move = new pieceMove();
 
     /**
      * This button represents that the player wants to move the piece in the 0 row and 0 column
-     * @param event
+     * @param event on click
      * @throws IOException
      */
     @FXML
@@ -68,7 +66,7 @@ public class gameViewController {
 
     /**
      * This button represents that the player wants to move the piece in the 0 row and 1 column
-     * @param event
+     * @param event on click
      * @throws IOException
      */
     @FXML
@@ -81,7 +79,7 @@ public class gameViewController {
 
     /**
      * This button represents that the player wants to move the piece in the 0 row and 2 column
-     * @param event
+     * @param event on click
      * @throws IOException
      */
     @FXML
@@ -94,7 +92,7 @@ public class gameViewController {
 
     /**
      * This button represents that the player wants to move the piece in the 1 row and 0 column
-     * @param event
+     * @param event on click
      * @throws IOException
      */
     @FXML
@@ -107,7 +105,7 @@ public class gameViewController {
 
     /**
      * This button represents that the player wants to move the piece in the 1 row and 1 column
-     * @param event
+     * @param event on click
      * @throws IOException
      */
     @FXML
@@ -120,7 +118,7 @@ public class gameViewController {
 
     /**
      * This button represents that the player wants to move the piece in the 1 row and 2 column
-     * @param event
+     * @param event on click
      * @throws IOException
      */
     @FXML
@@ -134,10 +132,19 @@ public class gameViewController {
     /**
      * This button allows player to give up this game
      * the window will close when player click this button
-     * @param event
+     * @param event on click
      */
     @FXML
-    void onGiveUpButtonActive(ActionEvent event){
+    void onGiveUpButtonActive(ActionEvent event) throws IOException {
+        DataSave dataSave = new DataSave();
+        long endTime = System.currentTimeMillis();
+        player.setEndDate(endTime);
+        player.setTotalTime(player.getEndDate() - player.getStartDate());
+        player.setGameOver(GameStatus.GIVEUP);
+        player.setChessBoard(chessboard.getcBoard());
+        player.setCount(count);
+        dataSave.setPlayer(player);
+        dataSave.save();
         Stage stage = (Stage)giveUpButton.getScene().getWindow();
         stage.close();
     }
@@ -149,8 +156,6 @@ public class gameViewController {
 
         System.out.println("ini in game view");
 
-        start = false;
-        giveUp = false;
         win = false;
         totalTime = 0;
         count = 0;
@@ -204,10 +209,8 @@ public class gameViewController {
                 player.setGameOver(GameStatus.WIN);
                 player.setChessBoard(chessboard.getcBoard());
                 player.setCount(count);
-//                dataSave.setPlayer(player);
-//                dataSave.save();
-//                dataSave.highScoreSave();
-
+                dataSave.setPlayer(player);
+                dataSave.save();
 
                 Jdbi jdbi = Jdbi.create("jdbc:oracle:thin:@oracle.inf.unideb.hu:1521:ora19c", "U_BRUL3M", "kalvinter");
                 jdbi.installPlugin(new SqlObjectPlugin());

@@ -57,13 +57,6 @@ public class PlayerInfo {
            return this.startDate;
        }
 
-/*       public void setPauseDate(Date code){
-        this.pauseDate = code;
-    }
-       public Date getPauseDate(){
-        return this.pauseDate;
-    }*/
-
        public void setTotalTime(Long code){
           this.totalTime = code;
        }

@@ -53,6 +53,11 @@ public class gameViewController {
     public static int locationCol = 0;
     public static pieceMove move = new pieceMove();
 
+    /**
+     * This button represents that the player wants to move the piece in the 0 row and 0 column
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onButton00Active(ActionEvent event) throws IOException {
         if(!win)
@@ -60,6 +65,12 @@ public class gameViewController {
         else
             this.testPrint();
     }
+
+    /**
+     * This button represents that the player wants to move the piece in the 0 row and 1 column
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onButton01Active(ActionEvent event) throws IOException {
         if(!win)
@@ -67,6 +78,12 @@ public class gameViewController {
         else
             this.testPrint();
     }
+
+    /**
+     * This button represents that the player wants to move the piece in the 0 row and 2 column
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onButton02Active(ActionEvent event) throws IOException {
         if(!win)
@@ -74,6 +91,12 @@ public class gameViewController {
         else
             this.testPrint();
     }
+
+    /**
+     * This button represents that the player wants to move the piece in the 1 row and 0 column
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onButton10Active(ActionEvent event) throws IOException {
         if(!win)
@@ -81,6 +104,12 @@ public class gameViewController {
         else
             this.testPrint();
     }
+
+    /**
+     * This button represents that the player wants to move the piece in the 1 row and 1 column
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onButton11Active(ActionEvent event) throws IOException {
         if(!win)
@@ -88,6 +117,12 @@ public class gameViewController {
         else
             this.testPrint();
     }
+
+    /**
+     * This button represents that the player wants to move the piece in the 1 row and 2 column
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onButton12Active(ActionEvent event) throws IOException {
         if (!win)
@@ -96,13 +131,20 @@ public class gameViewController {
             this.testPrint();
     }
 
+    /**
+     * This button allows player to give up this game
+     * the window will close when player click this button
+     * @param event
+     */
     @FXML
     void onGiveUpButtonActive(ActionEvent event){
         Stage stage = (Stage)giveUpButton.getScene().getWindow();
         stage.close();
     }
 
-
+    /**
+     * Initialization
+     */
     public void initialize(){
 
         System.out.println("ini in game view");

@@ -27,17 +27,20 @@ public class StartViewController {
     String playerID = "";
     String emp = "";
     public static String idGet;
+
+    /**
+     * If player input the name and click this button, then show the game-view scene
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onStartButtonActive(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-
         if(playerID != emp){
             System.out.println(playerID);
             textID.setText(emp);
             playerID = emp;
-
             gameViewController.player.setID(playerID);
-
             Parent root = FXMLLoader.load(getClass().getResource("game-view.fxml"));
             stage.setTitle("Board Game");
             stage.setScene(new Scene(root));
@@ -47,6 +50,11 @@ public class StartViewController {
         }
     }
 
+    /**
+     * Show the High Score Board when player click this button
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void onHighScoreButtonActive(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -60,13 +68,21 @@ public class StartViewController {
     void onQuitButtonActive(ActionEvent event){
          Stage stage = (Stage)quitButton.getScene().getWindow();
          stage.close();
-
     }
+
+    /**
+     * Get the player's input, and save it as the player's Name
+     * @param event
+     */
     @FXML
     void inputPlayerID(KeyEvent event){
         playerID = textID.getText();
         idGet = textID.getText();
     }
+
+    /**
+     * Initialization
+     */
     @FXML
     void initialize(){
         playerID = emp;

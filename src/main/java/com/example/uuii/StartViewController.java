@@ -50,7 +50,7 @@ public class StartViewController {
     @FXML
     void onHighScoreButtonActive(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("highscore-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("result.fxml"));
         stage.setTitle("Board Game");
         stage.setScene(new Scene(root));
         stage.show();

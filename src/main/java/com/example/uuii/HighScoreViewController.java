@@ -3,109 +3,58 @@ package com.example.uuii;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.core.statement.Slf4JSqlLogger;
+import org.jdbi.v3.sqlobject.SqlObjectPlugin;
+import org.tinylog.Logger;
+
+import javax.inject.Inject;
+import java.util.List;
 
 public class HighScoreViewController {
     @FXML
-    private TableView<HighScoreViewController> highScoreTable;
+    private TableColumn<GameResult , String> winnerName;
     @FXML
-    private TableColumn<HighScoreViewController, Number> rankCol;
+    private TableColumn<GameResult , Integer> TotalMoves;
     @FXML
-    private TableColumn<HighScoreViewController, String> playerIDCol;
+    private TableColumn<GameResult , String> StartTime;
     @FXML
-    private TableColumn<HighScoreViewController, Number> stepsCol;
-    @FXML
-    private TableColumn<HighScoreViewController, String> startCol;
-    @FXML
-    private TableColumn<HighScoreViewController, String> endCol;
-    @FXML
-    private TableColumn<HighScoreViewController, String> totalCol;
+    private TableColumn<GameResult , String> EndTime;
 
-    private String playerID;
-    private int playerRank;
-    private int playerSteps;
-    private Long playerStartTime;
-    private Long playerEndTime;
-    private Long playerTotalTime;
-    private String playerTotalTimeString;
+    @Inject
+    private FXMLLoader fxmlLoader;
 
-    public HighScoreViewController(PlayerInfo playerInfo){
-        this.playerID = playerInfo.getID();
-        this.playerSteps = playerInfo.getCount();
-        this.playerStartTime = playerInfo.getStartDate();
-        this.playerEndTime = playerInfo.getEndDate();
-        this.playerTotalTime = playerEndTime - playerStartTime;
-    }
-
-    public HighScoreViewController(String id, int steps, Long start, Long end){
-        this.playerID = id;
-        this.playerSteps = steps;
-        this.playerStartTime = start;
-        this.playerEndTime = end;
-        this.playerTotalTime = playerEndTime - playerStartTime;
-    }
-
-    public HighScoreViewController(int rank,String id, int steps, Long start, Long end){
-        this.playerRank = rank;
-        this.playerID = id;
-        this.playerSteps = steps;
-        this.playerStartTime = start;
-        this.playerEndTime = end;
-        this.playerTotalTime = playerEndTime - playerStartTime;
-    }
-    public HighScoreViewController(int rank, String id, int steps, String totalTime){
-        this.playerRank = rank;
-        this.playerID = id;
-        this.playerSteps = steps;
-        this.playerTotalTimeString = totalTime;
-    }
-
-    public void setPlayerID(String playerID) {
-        this.playerID = playerID;
-    }
-
-    public String getPlayerID() {
-        return playerID;
-    }
-    public void setPlayerRank(int rank){
-        this.playerRank = rank;
-    }
-
-    public int getPlayerRank() {
-        return playerRank;
-    }
-    public void setPlayerStartTime(Long start){
-        this.playerStartTime = start;
-    }
-
-    public Long getPlayerStartTime() {
-        return playerStartTime;
-    }
-
-    public void setPlayerEndTime(Long playerEndTime) {
-        this.playerEndTime = playerEndTime;
-    }
-
-    public Long getPlayerEndTime() {
-        return playerEndTime;
-    }
-
-    public void setPlayerTotalTime(Long playerTotalTime) {
-        this.playerTotalTime = playerTotalTime;
-    }
-
-    public Long getPlayerTotalTime() {
-        return playerTotalTime;
-    }
+    @Inject
+    private GameResultDao gameResultDao;
 
     @FXML
-    void initialize(){
-        ObservableList<HighScoreViewController> lis = FXCollections.observableArrayList();
-        HighScoreViewController player1 = new HighScoreViewController(1,"aa",10,"123");
-        HighScoreViewController player2 = new HighScoreViewController(2,"bb",16,"88888");
-        lis.addAll(player1,player2);
-        highScoreTable.setItems(lis);
+    private TableView<GameResult> highScoreTable;
+
+
+    @FXML
+    private void initialize() {
+
+        Logger.debug("Loading high scores...");
+        Jdbi jdbi = Jdbi.create("jdbc:oracle:thin:@oracle.inf.unideb.hu:1521:ora19c", "U_BRUL3M", "kalvinter");
+        jdbi.installPlugin(new SqlObjectPlugin());
+        jdbi.setSqlLogger(new Slf4JSqlLogger());
+        /**
+         * Get sorted data
+         */
+        List<GameResult> winnerResults = jdbi.withExtension(GameResultDao.class, GameResultDao::listTop10Results);
+        winnerName.setCellValueFactory(new PropertyValueFactory<>("playerName"));
+        TotalMoves.setCellValueFactory(new PropertyValueFactory<>("stepsByPlayer"));
+        StartTime.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+        EndTime.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+
+        ObservableList<GameResult> observableResult = FXCollections.observableArrayList();
+        observableResult.addAll(winnerResults);
+        highScoreTable.setItems(observableResult);
 
     }
+
 }

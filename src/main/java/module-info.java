@@ -7,6 +7,12 @@ module com.example.uuii {
     requires velocity;
     requires org.testng;
     requires lombok;
+    requires org.jdbi.v3.sqlobject;
+    requires org.jdbi.v3.core;
+    requires org.tinylog.api;
+    requires javax.inject;
+    requires java.sql;
+    requires org.apache.commons.io;
 
 
     opens com.example.uuii to javafx.fxml;

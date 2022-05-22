@@ -5,7 +5,7 @@
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="UUII" target="11" />
+      <module name="UUII" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

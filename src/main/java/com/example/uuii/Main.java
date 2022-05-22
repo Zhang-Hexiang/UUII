@@ -77,8 +77,8 @@ public class Main extends Application {
                 pieceB.swap(locationRow,locationCol,emptyRow,emptyCol);
                 count++;
 
-                //win = pieceB.isPlayerWin();
-                win = pieceB.testWin();
+                win = pieceB.isPlayerWin();
+
 
                 if(win) break;
                 else continue;

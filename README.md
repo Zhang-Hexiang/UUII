@@ -5,7 +5,7 @@ The left board shows the arrangement at the start of the game.
 The goal is to move the pieces according to the rules of chess until it reaches the arrangement in the right board.
 ------------------------------------------------------------------------------------------------------------------------
  ♔| ♗| ♗　　　|||　 　♗| ♗|  
---┼--┼---　　　|||　　　　---┼---┼---           
+--┼--┼---　　　|||　　--┼--┼---           
  ♖| ♖|　　　   |||　　　♖| ♖ | ♔
  -----------------------------------------------------------------------------------------------------------------------
 

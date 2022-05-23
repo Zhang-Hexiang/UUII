@@ -1,5 +1,7 @@
 package com.example.uuii;
 
+import org.tinylog.Logger;
+
 public class pieceMove {
 
     /**
@@ -41,9 +43,11 @@ public class pieceMove {
          */
         if(thisPiece != Piece.EMPTY && Math.abs(col - emptyCol) != 2){
             if(absCoordinateValue == 1 && thisPiece != Piece.BISHOP){
+                Logger.info("movable");
                 return true;
             }
             else if((absCoordinateValue == 0 || absCoordinateValue == 2) && thisPiece != Piece.ROOK){
+                Logger.info("movable");
                 return true;
             }
             else

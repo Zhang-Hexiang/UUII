@@ -1,6 +1,7 @@
 import com.example.uuii.Chessboard;
 import com.example.uuii.Piece;
 import org.testng.annotations.Test;
+import org.tinylog.Logger;
 
 
 public class TestClss {
@@ -30,9 +31,11 @@ public class TestClss {
         int absCoordinateValue = Math.abs(thisPieceMark - emptyPieceMark);
         if(thisPiece != Piece.EMPTY && Math.abs(col - emptyCol) != 2){
             if(absCoordinateValue == 1 && thisPiece != Piece.BISHOP){
+
                 return true;
             }
             else if((absCoordinateValue == 0 || absCoordinateValue == 2) && thisPiece != Piece.ROOK){
+
                 return true;
             }
             else

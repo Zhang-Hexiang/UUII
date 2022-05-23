@@ -28,7 +28,6 @@ public class DataSave {
     public void save() throws IOException {
         JSONArray jsonArray = new JSONArray();
         File file = new File("E:\\UUII\\src\\main\\resources\\GameData.json");
-
         FileOutputStream fileOutputStream = new FileOutputStream(file,false);
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
         BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);

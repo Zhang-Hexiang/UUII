@@ -181,10 +181,11 @@ public class gameViewController {
             count++;
             System.out.println(count);
             win = chessboard.isPlayerWin();
-            ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
-            ImageView emptyPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\EMPTY.png");
-            ImageView rookPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\ROOK.png");
-            ImageView bishopPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\BISHOP.png");
+//            ImageView kingPiece = new ImageView("E:\\UUII\\src\\main\\resources\\image\\KING.png");
+            ImageView kingPiece = new ImageView(getClass().getResource("/image/KING.png").toExternalForm());
+            ImageView emptyPiece = new ImageView(getClass().getResource("/image/EMPTY.png").toExternalForm());
+            ImageView rookPiece = new ImageView(getClass().getResource("/image/ROOK.png").toExternalForm());
+            ImageView bishopPiece = new ImageView(getClass().getResource("/image/BISHOP.png").toExternalForm());
             switch (piece){
                 case ROOK:
                     grid.add(rookPiece,emptyCol,emptyRow);
